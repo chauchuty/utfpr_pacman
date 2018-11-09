@@ -380,8 +380,12 @@ void vocePerdeu(){
 	system("cls");
 	loading();
 	artePac();
-	colorir(4,0);
+	colorir(12,0);
 	printf("\n\t\tVocê perdeu.");
+	colorir(15,0);
+	printf("\n\n\t\tPontos: ");
+	colorir(3,0);
+	printf("%04d", player.pontos-20);
 	colorir(8,0);
 	printf("\n\n Pressione qualquer tecla para continuar...");
 	colorir(15,0);
@@ -397,8 +401,12 @@ void voceGanhou(){
 	system("cls");
 	loading();
 	artePac();
+	colorir(14,0);
+	printf("\n\t\t Parabéns!\n \t\tVocê ganhou!");
+	colorir(15,0);
+	printf("\n\n\t\tPontos: ");
 	colorir(3,0);
-	printf("\n\t   Parabéns! Você ganhou!");
+	printf("%04d", player.pontos-20);
 	colorir(8,0);
 	printf("\n\n Pressione qualquer tecla para continuar...");
 	colorir(15,0);
@@ -548,7 +556,7 @@ void gamePlay(){
 	player.simbolo = 67, player.pos_i = 1, player.pos_j = 2, player.nav = 0, player.pontos = 0;
 	fantasma[0].simbolo = 35,fantasma[0].pos_i = 6, fantasma[0].pos_j = 9, fantasma[0].nav = 0, fantasma[0].ia = 4;
 	fantasma[1].simbolo = 36,fantasma[1].pos_i = 6, fantasma[1].pos_j = 10, fantasma[1].nav = 1, fantasma[1].ia = 4;
-	fantasma[2].simbolo = 37,fantasma[2].pos_i = 7, fantasma[2].pos_j = 9, fantasma[2].nav = 2, fantasma[2].ia = 5;
+	fantasma[2].simbolo = 37,fantasma[2].pos_i = 7, fantasma[2].pos_j = 9, fantasma[2].nav = 2, fantasma[2].ia = 6;
 	fantasma[3].simbolo = 38,fantasma[3].pos_i = 7, fantasma[3].pos_j = 10, fantasma[3].nav = 3, fantasma[3].ia = 6;
 	
 	loading();
@@ -681,7 +689,9 @@ void gamePlay(){
 		
 		// Pontuação 
 		colorir(8,0);
-		printf("\n\t\t\t   Pontos: %04d  ", player.pontos-10);
+		printf("\n\t\t\t   Pontos: ");
+		colorir(15,0);
+		printf("%04d  ", player.pontos-10);
 		colorir(15,0);
 		
 		// Fim Pontuação
