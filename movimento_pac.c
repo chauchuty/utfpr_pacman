@@ -16,6 +16,7 @@ void esconderCursor(){
 
 struct Mapa{
 	char vet[10][10];
+	char vet_pontos[10][10];
 }mapa;
 
 struct Pac{
@@ -78,10 +79,21 @@ void gamePlay(){
 		// Construir Mapa
 		for(i = 0; i < 10; i++){
 			for(j = 0; j < 10; j++){
-				mapa.vet[i][j] = 250;
+				if(mapa.vet_pontos[i][j] == 'X'){
+					// Recebendo vazio ' '
+					mapa.vet[i][j] = 0;
+				} else {
+					// Recebendo bolinha
+					mapa.vet[i][j] = 250;
+				}
+				
 			}
 		}
+		
 		mapa.vet[pac.posicao[0]][pac.posicao[1]] = pac.simbolo;
+		
+		// Inserindo valor 'X' no Vetor de Pontos na posição do Pac:
+		mapa.vet_pontos[pac.posicao[0]][pac.posicao[1]] = 'X';
 		// Fim Construir Mapa
 		
 		// Imprimir Tecla (Kbhit + Getch)
