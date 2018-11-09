@@ -1,3 +1,3 @@
 # utfpr_pacman
 
-Projeto desenvolvimento no curso de Análise e desenvolvimento de sistemas - UTFPR.
+Projeto desenvolvimento no curso de Análise e Desenvolvimento de Sistemas - UTFPR.
