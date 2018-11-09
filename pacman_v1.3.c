@@ -1,8 +1,8 @@
-// Função: Atividade parcial das disciplinas Linguagem de Programação e Algoritmos (UTFPR-PG)
+// FunÃ§Ã£o: Atividade parcial das disciplinas Linguagem de ProgramaÃ§Ã£o e Algoritmos (UTFPR-PG)
 // Autor: Cesar Mauricio Chauchuty, Gabriel da Cruz Rakovicz
 // Data: 08/11/18
 // Jogo: Pac-Man
-// Versão: 1.1
+// VersÃ£o: 1.1
 // Compilador: TMD-GCC 4.9.2 64-bit Release
 
 #include <stdio.h>
@@ -83,32 +83,32 @@ void loading(){
 	system("cls");
 }
 
-// Opções da telaInicial()
+// OpÃ§Ãµes da telaInicial()
 int opcoesMenu(char tecla, int nav){
 	char dificuldade[5];
 	linha();
 	switch(mapa.dificuldade){
 		case 300000:
-			strcpy(dificuldade, "Fácil");
+			strcpy(dificuldade, "FÃ¡cil");
 			break;
 		case 200000:
-			strcpy(dificuldade, "Médio");
+			strcpy(dificuldade, "MÃ©dio");
 			break;
 		case 100000:
-		strcpy(dificuldade, "Béééé");
+		strcpy(dificuldade, "BÃ©Ã©Ã©Ã©");
 	}
 	switch(nav){
 		case 0:
 			colorir(3,0);
 			printf("\n\t      >  Iniciar       ");
 			colorir(15,0);
-			printf("\n\t          Instruções   ");
+			printf("\n\t          InstruÃ§Ãµes   ");
 			printf("\n\t          Dificuldade  ");
-			printf("\n\t          Pontuação    ");
-			printf("\n\t          Créditos     ");
+			printf("\n\t          PontuaÃ§Ã£o    ");
+			printf("\n\t          CrÃ©ditos     ");
 			printf("\n\t          Sair         ");
 			colorir(8,0);
-			printf("\n\t\t\t\tNível: %s", dificuldade);
+			printf("\n\t\t\t\tNÃ­vel: %s", dificuldade);
 			colorir(15,0);
 			if(tecla == 13){
 				return 0;
@@ -118,14 +118,14 @@ int opcoesMenu(char tecla, int nav){
 			
 			printf("\n\t          Iniciar         ");
 			colorir(3,0);
-			printf("\n\t      >  Instruções       ");
+			printf("\n\t      >  InstruÃ§Ãµes       ");
 			colorir(15,0);
 			printf("\n\t          Dificuldade     ");
-			printf("\n\t          Pontuação       ");
-			printf("\n\t          Créditos        ");
+			printf("\n\t          PontuaÃ§Ã£o       ");
+			printf("\n\t          CrÃ©ditos        ");
 			printf("\n\t          Sair            ");
 			colorir(8,0);
-			printf("\n\t\t\t\tNível: %s", dificuldade);
+			printf("\n\t\t\t\tNÃ­vel: %s", dificuldade);
 			colorir(15,0);
 			if(tecla == 13){
 				return 1;
@@ -133,15 +133,15 @@ int opcoesMenu(char tecla, int nav){
 			break;
 		case 2:
 			printf("\n\t          Iniciar         ");
-			printf("\n\t          Instruções      ");
+			printf("\n\t          InstruÃ§Ãµes      ");
 			colorir(3,0);
 			printf("\n\t      >  Dificuldade      ");
 			colorir(15,0);
-			printf("\n\t          Pontuação       ");
-			printf("\n\t          Créditos        ");
+			printf("\n\t          PontuaÃ§Ã£o       ");
+			printf("\n\t          CrÃ©ditos        ");
 			printf("\n\t          Sair            ");
 			colorir(8,0);
-			printf("\n\t\t\t\tNível: %s", dificuldade);
+			printf("\n\t\t\t\tNÃ­vel: %s", dificuldade);
 			colorir(15,0);
 			if(tecla == 13){
 				return 2;
@@ -149,15 +149,15 @@ int opcoesMenu(char tecla, int nav){
 			break;
 		case 3:
 			printf("\n\t          Iniciar         ");
-			printf("\n\t          Instruções      ");
+			printf("\n\t          InstruÃ§Ãµes      ");
 			printf("\n\t          Dificuldade     ");
 			colorir(3,0);
-			printf("\n\t      >  Pontuação        ");
+			printf("\n\t      >  PontuaÃ§Ã£o        ");
 			colorir(15,0);
-			printf("\n\t          Créditos        ");
+			printf("\n\t          CrÃ©ditos        ");
 			printf("\n\t          Sair            ");
 			colorir(8,0);
-			printf("\n\t\t\t\tNível: %s", dificuldade);
+			printf("\n\t\t\t\tNÃ­vel: %s", dificuldade);
 			colorir(15,0);
 			if(tecla == 13){
 				return 3;
@@ -166,15 +166,15 @@ int opcoesMenu(char tecla, int nav){
 		case 4:
 			
 			printf("\n\t          Iniciar         ");
-			printf("\n\t          Instrucões      ");
+			printf("\n\t          InstrucÃµes      ");
 			printf("\n\t          Dificuldade     ");
-			printf("\n\t          Pontuação       ");
+			printf("\n\t          PontuaÃ§Ã£o       ");
 			colorir(3,0);
-			printf("\n\t      >  Créditos         ");
+			printf("\n\t      >  CrÃ©ditos         ");
 			colorir(15,0);
 			printf("\n\t          Sair            ");
 			colorir(8,0);
-			printf("\n\t\t\t\tNível: %s", dificuldade);
+			printf("\n\t\t\t\tNÃ­vel: %s", dificuldade);
 			colorir(15,0);
 			if(tecla == 13){
 				return 4;
@@ -183,30 +183,30 @@ int opcoesMenu(char tecla, int nav){
 		case 5:
 			
 			printf("\n\t          Iniciar         ");
-			printf("\n\t          Instrucões      ");
+			printf("\n\t          InstrucÃµes      ");
 			printf("\n\t          Dificuldade     ");
-			printf("\n\t          Pontuação       ");
-			printf("\n\t          Créditos        ");
+			printf("\n\t          PontuaÃ§Ã£o       ");
+			printf("\n\t          CrÃ©ditos        ");
 			colorir(3,0);
 			printf("\n\t      >  Sair             ");
 			colorir(15,0);
 			colorir(8,0);
-			printf("\n\t\t\t\tNível: %s", dificuldade);
+			printf("\n\t\t\t\tNÃ­vel: %s", dificuldade);
 			colorir(15,0);
 			if(tecla == 13){
 				return 5;
 			}
 		}	
 		linha();
-		printf("\n\t         Versão 1.3          ");
+		printf("\n\t         VersÃ£o 1.3          ");
 }
 
-// Tela de Instruções
+// Tela de InstruÃ§Ãµes
 void instrucoes(){
 	system("cls");
 	loading();
 	artePac();
-	printf("\t\t- INSTRUÇÕES -");
+	printf("\t\t- INSTRUÃ‡Ã•ES -");
 	linha();
 	printf("\n Controle:\n");
 	colorir(3,0);
@@ -216,7 +216,7 @@ void instrucoes(){
 	printf("\n Objetivo: \n");
 	colorir(3,0);
 	printf("\t   Coma todas as bolinhas sobre o \n\t   tabuleiro.\n");
-	printf("\n\t   Não deixe que os fantasmas o \n\t   toquem!");
+	printf("\n\t   NÃ£o deixe que os fantasmas o \n\t   toquem!");
 	colorir(15,0);
 	linha();
 	colorir(8,0);
@@ -255,10 +255,10 @@ int dificuldade(){
 		switch(player.nav){
 			case 0:
 				colorir(3,0);
-				printf("\n\t         >  Fácil     ");
+				printf("\n\t         >  FÃ¡cil     ");
 				colorir(15,0);
-				printf("\n\t             Médio    ");
-				printf("\n\t             Béééé  ");
+				printf("\n\t             MÃ©dio    ");
+				printf("\n\t             BÃ©Ã©Ã©Ã©  ");
 				funcKbhit();
 				if(player.tecla == 13){
 					mapa.dificuldade = 300000;
@@ -268,11 +268,11 @@ int dificuldade(){
 				}
 				break;
 			case 1:
-				printf("\n\t             Fácil    ");
+				printf("\n\t             FÃ¡cil    ");
 				colorir(6,0);	
-				printf("\n\t         >  Médio     ");
+				printf("\n\t         >  MÃ©dio     ");
 				colorir(15,0);
-				printf("\n\t             Béééé  ");
+				printf("\n\t             BÃ©Ã©Ã©Ã©  ");
 				funcKbhit();
 				if(player.tecla == 13){
 					mapa.dificuldade = 200000;
@@ -282,10 +282,10 @@ int dificuldade(){
 				}
 				break;
 			case 2:
-				printf("\n\t             Fácil    ");
-				printf("\n\t             Médio    ");
+				printf("\n\t             FÃ¡cil    ");
+				printf("\n\t             MÃ©dio    ");
 				colorir(4,0);
-				printf("\n\t         >  Béééé     ");
+				printf("\n\t         >  BÃ©Ã©Ã©Ã©     ");
 				colorir(15,0);
 				funcKbhit();
 				if(player.tecla == 13){
@@ -304,15 +304,15 @@ int dificuldade(){
 		loading();
 }
 
-// Tela de Pontuação 
+// Tela de PontuaÃ§Ã£o 
 void pontuacao(int pontos){
 	system("cls");
 	loading();
 	artePac();
-	printf("\t\t- PONTUAÇÃO -");
+	printf("\t\t- PONTUAÃ‡ÃƒO -");
 	linha();
 	colorir(3,0);
-	printf("\n\t     Pontuação Máxima: ");
+	printf("\n\t     PontuaÃ§Ã£o MÃ¡xima: ");
 	colorir(15,0);
 	printf("%d", player.m_pontos);
 	colorir(8,0);
@@ -323,12 +323,12 @@ void pontuacao(int pontos){
 	loading();
 }
 
-// Tela de Créditos
+// Tela de CrÃ©ditos
 void creditos(){
 	system("cls");
 	loading();
 	artePac();
-	printf("\t\t- CRÉDITOS -");
+	printf("\t\t- CRÃ‰DITOS -");
 	linha();
 	colorir(3,0);
 	printf("\n\t   Cesar Mauricio Chauchuty");
@@ -356,7 +356,7 @@ void sair(int cheat){
 	if(cheat == 1){
 		colorir(4, 0);
 		printf("\n\n");
-		printf("\t  Béééééé!!!                           \n");
+		printf("\t  BÃ©Ã©Ã©Ã©Ã©Ã©!!!                           \n");
 		printf("\n                    / /                 ");
 		printf("\n                  _(.(.                 ");
 		printf("\n                ,'9 )\\)`-.,.--.        ");
@@ -381,7 +381,7 @@ void vocePerdeu(){
 	loading();
 	artePac();
 	colorir(4,0);
-	printf("\n\t\tVocê perdeu.");
+	printf("\n\t\tVocÃª perdeu.");
 	colorir(8,0);
 	printf("\n\n Pressione qualquer tecla para continuar...");
 	colorir(15,0);
@@ -398,7 +398,7 @@ void voceGanhou(){
 	loading();
 	artePac();
 	colorir(3,0);
-	printf("\n\t   Parabéns! Você ganhou!");
+	printf("\n\t   ParabÃ©ns! VocÃª ganhou!");
 	colorir(8,0);
 	printf("\n\n Pressione qualquer tecla para continuar...");
 	colorir(15,0);
@@ -410,8 +410,8 @@ void voceGanhou(){
 
 // Controlador:
 /*
-   Dentro do procedimento gamePlay() temos a função kbhit() combinada com getch().
-   O resultado é capturar as telas W, S, D, A e de acordo com a tecla capturada,
+   Dentro do procedimento gamePlay() temos a funÃ§Ã£o kbhit() combinada com getch().
+   O resultado Ã© capturar as telas W, S, D, A e de acordo com a tecla capturada,
    movimentar o Pac dentro da Matriz (i++, i--, j++, j--)...
 */
 
@@ -489,7 +489,6 @@ void fantasma_nav(int nav, int pos_i, int pos_j, int ia, int tam_i, int tam_j){
 			case 0:
 			case 1:
 			case 2:
-			case 3:
 				if(player.pos_i < fantasma[nav].pos_i){
 					if(mapa.vet_mapa[pos_i-1][pos_j] != '|'){
 						fantasma[nav].pos_i--;
@@ -584,7 +583,7 @@ void gamePlay(){
 		
 		// Fim Fantasmas
 		
-	// Construção Mapa
+	// ConstruÃ§Ã£o Mapa
 		colorir(1,0);
 		printf(" -------------------------------------\n");
 		colorir(15,0);
@@ -625,7 +624,7 @@ void gamePlay(){
 						if(player.pontos > player.m_pontos){
 							player.m_pontos = player.pontos - 20;
 						}
-						// Pontuação Máxima 2060
+						// PontuaÃ§Ã£o MÃ¡xima 2060
 						if(player.pontos >= 2060){
 							voceGanhou();
 						}
@@ -680,12 +679,12 @@ void gamePlay(){
 		printf(" -------------------------------------\n");
 		colorir(15,0);
 		
-		// Pontuação 
+		// PontuaÃ§Ã£o 
 		colorir(8,0);
 		printf("\n\t\t\t   Pontos: %04d  ", player.pontos-10);
 		colorir(15,0);
 		
-		// Fim Pontuação
+		// Fim PontuaÃ§Ã£o
 		
 		if(player.simbolo == 67 && player.pontos > 1){
 			player.simbolo = 79;
@@ -693,7 +692,7 @@ void gamePlay(){
 			player.simbolo = 67;
 		}
 		usleep(mapa.dificuldade);
-		// Fim Construção Mapa
+		// Fim ConstruÃ§Ã£o Mapa
 	
 	}while(1);
 }
@@ -756,7 +755,7 @@ int telaInicial(){
 			}
 		}
 		
-		// Opções Menu
+		// OpÃ§Ãµes Menu
 		switch(opcoesMenu(player.tecla, player.nav)){
 			case 0:
 				system("cls");
