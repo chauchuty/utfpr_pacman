@@ -11,7 +11,7 @@
 #include <locale.h>
 #include <string.h>
 
-#define nomeJogo() SetConsoleTitle("Pac-Man")
+#define nomeJogo() SetConsoleTitle("PacMan Atividade Parcial")
 #define tempoRandom() srand(time(NULL));
 #define pt_br() setlocale (LC_ALL, "portuguese")
 #define corJogo() system("color f")
