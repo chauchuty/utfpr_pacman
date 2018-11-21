@@ -563,8 +563,8 @@ void gamePlay(){
 	player.simbolo = 67, player.pos_i = 1, player.pos_j = 2, player.pontos = 0;
 	fantasma[0].simbolo = 35,fantasma[0].pos_i = 6, fantasma[0].pos_j = 9,  fantasma[0].nav = 0, fantasma[0].ia = 5;
 	fantasma[1].simbolo = 36,fantasma[1].pos_i = 6, fantasma[1].pos_j = 10, fantasma[1].nav = 1, fantasma[1].ia = 5;
-	fantasma[2].simbolo = 37,fantasma[2].pos_i = 7, fantasma[2].pos_j = 9,  fantasma[2].nav = 2, fantasma[2].ia = mapa.dificuldade / 15 /*%*/, fantasma[2].cont = 0;
-	fantasma[3].simbolo = 38,fantasma[3].pos_i = 7, fantasma[3].pos_j = 10, fantasma[3].nav = 3, fantasma[3].ia = mapa.dificuldade / 24 /*%*/; fantasma[3].cont = 0;
+	fantasma[2].simbolo = 37,fantasma[2].pos_i = 7, fantasma[2].pos_j = 9,  fantasma[2].nav = 2, fantasma[2].ia = mapa.dificuldade / 21 /*%*/, fantasma[2].cont = 0;
+	fantasma[3].simbolo = 38,fantasma[3].pos_i = 7, fantasma[3].pos_j = 10, fantasma[3].nav = 3, fantasma[3].ia = mapa.dificuldade / 17 /*%*/; fantasma[3].cont = 0;
 	
 	loading();
 	
