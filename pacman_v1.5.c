@@ -11,7 +11,7 @@
 #include <locale.h>
 #include <string.h>
 
-#define nomeJogo() SetConsoleTitle("PacMan Atividade Parcial")
+#define nomeJogo() SetConsoleTitle("PacMan - Atividade Parcial")
 #define tempoRandom() srand(time(NULL));
 #define pt_br() setlocale (LC_ALL, "portuguese")
 #define corJogo() system("color f")
@@ -19,6 +19,7 @@
 #define linha() printf("\n---------------------------------------------")
 
 /*        Registros        */
+
 struct Mapa{
 	char vet_mapa[13][20], vet_pontos[13][20];
 	int dificuldade;
@@ -669,7 +670,7 @@ void gamePlay(){
 			printf("\n");
 		}
 		
-		// Voce Perde!
+		// Voce Perdeu
 		if(player.pos_i == fantasma[0].pos_i && player.pos_j == fantasma[0].pos_j && player.cheat == 0){
 				vocePerdeu();
 		} else if(player.pos_i == fantasma[1].pos_i && player.pos_j == fantasma[1].pos_j && player.cheat == 0) {
@@ -690,7 +691,7 @@ void gamePlay(){
 				if(player.pontos % 200 == 0){
 					bar++;
 				}
-				// Pontuação Máxima 2060
+				// Pontuação Máxima 2050
 				if(player.pontos >= 2060){
 					voceGanhou();
 				}
@@ -749,19 +750,15 @@ int telaInicial(){
 				}
 			}
 		}
-		
 		for(i = 0; i <= 21; i++){
 			printf(" %c", vet_efeito[i]);
 		}
-		
 		pos_pac++;
-		
 		if(pos_pac > 22){
 			pos_pac = 0;
 		}
-		// Fim Efeito Pacman
 		
-		// Menu
+		/*        Menu       */
 		
 		// Controle
 		if(kbhit()){
