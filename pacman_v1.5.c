@@ -8,9 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <unistd.h>
+#include <time.h>
+#include <conio.h>
 #include <locale.h>
 #include <string.h>
 
+#define sleep(x) Sleep(1000 * (x))
 #define nomeJogo() SetConsoleTitle("PacMan - Atividade Parcial")
 #define tempoRandom() srand(time(NULL));
 #define pt_br() setlocale (LC_ALL, "portuguese")
@@ -119,7 +123,7 @@ int opcoesMenu(char tecla, int nav){
 			}
 			break;
 		case 1:
-			
+
 			printf("\n\t          Iniciar         ");
 			colorir(3,0);
 			printf("\n\t      >  Instruções       ");
@@ -168,7 +172,7 @@ int opcoesMenu(char tecla, int nav){
 			}
 			break;
 		case 4:
-			
+
 			printf("\n\t          Iniciar         ");
 			printf("\n\t          Instrucões      ");
 			printf("\n\t          Dificuldade     ");
@@ -185,7 +189,7 @@ int opcoesMenu(char tecla, int nav){
 			}
 			break;
 		case 5:
-			
+
 			printf("\n\t          Iniciar         ");
 			printf("\n\t          Instrucões      ");
 			printf("\n\t          Dificuldade     ");
@@ -200,7 +204,7 @@ int opcoesMenu(char tecla, int nav){
 			if(tecla == 13){
 				return 5;
 			}
-		}	
+		}
 		linha();
 		printf("\n\t         Versão 1.5          ");
 }
@@ -272,7 +276,7 @@ int dificuldade(){
 				break;
 			case 1:
 				printf("\n\t             Fácil    ");
-				colorir(6,0);	
+				colorir(6,0);
 				printf("\n\t         >  Médio     ");
 				colorir(15,0);
 				printf("\n\t             Béééé  ");
@@ -307,7 +311,7 @@ int dificuldade(){
 	loading();
 }
 
-// Tela Pontuação 
+// Tela Pontuação
 void pontuacao(int pontos){
 	system("cls");
 	loading();
@@ -433,7 +437,7 @@ void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 				if(player.pos_i != 0){
 					player.pos_i--;
 				}
-	
+
 				break;
 			case 's':
 			case 'S':
@@ -466,7 +470,7 @@ void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 			case 'P':
 				system("pause > nul");
 				player.tecla = ' ';
-		}	
+		}
 }
 
 // Fantasmas Navegação
@@ -497,7 +501,7 @@ void fantasma_nav(int nav, int pos_i, int pos_j, int ia, int tam_i, int tam_j){
 					break;
 			}
 			break;
-			
+
 		case 2:
 		case 3:
 			switch(rand() % ia){
@@ -514,11 +518,11 @@ void fantasma_nav(int nav, int pos_i, int pos_j, int ia, int tam_i, int tam_j){
 							if(fantasma[nav].cont >= 8){
 								fantasma[nav].cont = 0;
 							}
-						} 
+						}
 					}
 				} else if(player.pos_j > fantasma[nav].pos_j){
 					if(mapa.vet_mapa[pos_i][pos_j+1] != '|'){
-						fantasma[nav].pos_j++;	
+						fantasma[nav].pos_j++;
 					} else {
 						fantasma[nav].cont++;
 						if(fantasma[nav].cont > 2){
@@ -550,8 +554,8 @@ void fantasma_nav(int nav, int pos_i, int pos_j, int ia, int tam_i, int tam_j){
 							fantasma[nav].cont = 0;
 						}
 					}
-				} 
-		}			
+				}
+		}
 	}
 }
 
@@ -565,26 +569,26 @@ void gamePlay(){
 	fantasma[1].simbolo = 36,fantasma[1].pos_i = 6, fantasma[1].pos_j = 10, fantasma[1].nav = 1, fantasma[1].ia = 5;
 	fantasma[2].simbolo = 37,fantasma[2].pos_i = 7, fantasma[2].pos_j = 9,  fantasma[2].nav = 2, fantasma[2].ia = mapa.dificuldade / 21 /*%*/, fantasma[2].cont = 0;
 	fantasma[3].simbolo = 38,fantasma[3].pos_i = 7, fantasma[3].pos_j = 10, fantasma[3].nav = 3, fantasma[3].ia = mapa.dificuldade / 17 /*%*/; fantasma[3].cont = 0;
-	
+
 	loading();
-	
+
 	// Limpar Mapa Pontos
 	for(i = 0; i <= tam_i; i++){
 		for(j = 0; j <= tam_j; j++){
 				mapa.vet_pontos[i][j] = ' ';
-		}		
+		}
 	}
-	
+
 	do{
-		
+
 		limpaTela();
-		
-		// Captura Tecla	
+
+		// Captura Tecla
 		funcKbhit();
-	
+
 		// Controlador
 		controle(player.pos_i, player.pos_j, tam_i, tam_j);
-		
+
 		// Fantasmas
 		if(player.pontos > 1){
 			fantasma_nav(fantasma[0].nav, fantasma[0].pos_i, fantasma[0].pos_j, fantasma[0].ia, tam_i, tam_j);
@@ -592,7 +596,7 @@ void gamePlay(){
 			fantasma_nav(fantasma[2].nav, fantasma[2].pos_i, fantasma[2].pos_j, fantasma[2].ia, tam_i, tam_j);
 			fantasma_nav(fantasma[3].nav, fantasma[3].pos_i, fantasma[3].pos_j, fantasma[3].ia, tam_i, tam_j);
 		}
-	
+
 		// Construção Mapa
 		printf("\n");
 		colorir(1,0);
@@ -623,14 +627,14 @@ void gamePlay(){
 						mapa.vet_mapa[i][j] = 183;
 					}
 				}
-				
+
 				// Inserção do Player e Fantasmas
 				mapa.vet_mapa[player.pos_i][player.pos_j] = player.simbolo;
 				mapa.vet_mapa[fantasma[0].pos_i][fantasma[0].pos_j] = fantasma[0].simbolo;
 				mapa.vet_mapa[fantasma[1].pos_i][fantasma[1].pos_j] = fantasma[1].simbolo;
 				mapa.vet_mapa[fantasma[2].pos_i][fantasma[2].pos_j] = fantasma[2].simbolo;
 				mapa.vet_mapa[fantasma[3].pos_i][fantasma[3].pos_j] = fantasma[3].simbolo;
-				
+
 			}
 		}
 
@@ -669,7 +673,7 @@ void gamePlay(){
 			}
 			printf("\n");
 		}
-		
+
 		// Voce Perdeu
 		if(player.pos_i == fantasma[0].pos_i && player.pos_j == fantasma[0].pos_j && player.cheat == 0){
 				vocePerdeu();
@@ -700,23 +704,23 @@ void gamePlay(){
 		colorir(1,0);
 		printf("    -------------------------------------\n");
 		colorir(15,0);
-		
+
 		colorir(8,0);
 		printf("\t\t\t      Pontos: ");
 		colorir(15,0);
 		printf("%04d  ", player.pontos-10);
 		colorir(15,0);
-		
+
 		// Alternar Pac-man
 		if(player.simbolo == 67 && player.pontos > 1){
 			player.simbolo = 79;
 		} else {
 			player.simbolo = 67;
 		}
-			
+
 		// Dificuldade
 		Sleep(mapa.dificuldade);
-	
+
 	}while(1);
 }
 
@@ -727,11 +731,11 @@ int telaInicial(){
 	player.tecla = ' ';
 	player.nav = 0;
 	player.cheat = 0;
-		
+
 	do{
 		// Arte Pacman
 		artePac();
-		
+
 		// Efeito Pacman
 		for(i = 0; i <= 22; i++){
 			if(pos_pac == i){
@@ -757,9 +761,9 @@ int telaInicial(){
 		if(pos_pac > 22){
 			pos_pac = 0;
 		}
-		
+
 		/*        Menu       */
-		
+
 		// Controle
 		if(kbhit()){
 			fflush(stdin);
@@ -773,7 +777,7 @@ int telaInicial(){
 				player.cheat = 1;
 			}
 		}
-		
+
 		// Opções Menu
 		switch(opcoesMenu(player.tecla, player.nav)){
 			case 0:
@@ -801,12 +805,12 @@ int telaInicial(){
 				sair();
 				break;
 		}
-				
+
 		Sleep(120);
 		limpaTela();
-		
+
 	}while(1);
-	
+
 	return 0;
 }
 
@@ -821,9 +825,9 @@ int main(){
 	tempoRandom();
 	pt_br();
 	corJogo();
-	
+
 	// Tela Inicial
 	telaInicial();
-	
+
 	return 0;
 }
