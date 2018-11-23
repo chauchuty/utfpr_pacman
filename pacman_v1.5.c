@@ -15,7 +15,7 @@
 #include <string.h>
 
 #define sleep(x) Sleep(1000 * (x))
-#define nomeJogo() SetConsoleTitle("PacMan - Atividade Parcial")
+#define nomeJogo() SetConsoleTitle("PAC-MAN")
 #define tempoRandom() srand(time(NULL));
 #define pt_br() setlocale (LC_ALL, "portuguese")
 #define corJogo() system("color f")
@@ -57,11 +57,8 @@ void colorir(int F, int B) {
 
 // Esconde o cursor
 void esconderCursor(){
-   HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-   CONSOLE_CURSOR_INFO info;
-   info.dwSize = 100;
-   info.bVisible = FALSE;
-   SetConsoleCursorInfo(consoleHandle, &info);
+   CONSOLE_CURSOR_INFO cursor = {1, FALSE};
+   SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
 }
 
 // Arte Pac
@@ -206,7 +203,6 @@ int opcoesMenu(char tecla, int nav){
 			}
 		}
 		linha();
-		printf("\n\t         Versão 1.5          ");
 }
 
 // Tela Instruções
@@ -382,7 +378,7 @@ void sair(){
 }
 
 // Tela Você Perdeu
-void vocePerdeu(){
+int vocePerdeu(){
 	sleep(1);
 	if(player.pontos > 0){
 		player.pontos-= 10;
@@ -402,11 +398,11 @@ void vocePerdeu(){
 	system("pause > nul");
 	system("cls");
 	loading();
-	telaInicial();
+	return 0;
 }
 
 // Tela Você Ganhou
-void voceGanhou(){
+int voceGanhou(){
 	sleep(1);
 	system("cls");
 	loading();
@@ -423,14 +419,14 @@ void voceGanhou(){
 	system("pause > nul");
 	system("cls");
 	loading();
-	telaInicial();
+	return 0;
 }
 
 // Controlador
 void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 	switch(player.tecla){
-			case 'w':
 			case 'W':
+			case 'w':	
 				if(mapa.vet_mapa[pos_i-1][pos_j] == '|'){
 					break;
 				}
@@ -439,8 +435,8 @@ void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 				}
 
 				break;
-			case 's':
 			case 'S':
+			case 's':
 				if(mapa.vet_mapa[pos_i+1][pos_j] == '|'){
 					break;
 				}
@@ -448,8 +444,8 @@ void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 					player.pos_i++;
 				}
 				break;
-			case 'a':
 			case 'A':
+			case 'a':
 				if(mapa.vet_mapa[pos_i][pos_j-1] == '|'){
 					break;
 				}
@@ -457,8 +453,8 @@ void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 					player.pos_j--;
 				}
 				break;
-			case 'd':
 			case 'D':
+			case 'd':
 				if(mapa.vet_mapa[pos_i][pos_j+1] == '|'){
 					break;
 				}
@@ -466,8 +462,8 @@ void controle(int pos_i, int pos_j, int tam_i, int tam_j){
 					player.pos_j++;
 				}
 				break;
-			case 'p':
 			case 'P':
+			case 'p':
 				system("pause > nul");
 				player.tecla = ' ';
 		}
@@ -538,8 +534,8 @@ void fantasma_nav(int nav, int pos_i, int pos_j, int ia, int tam_i, int tam_j){
 					} else {
 						fantasma[nav].cont++;
 						if(fantasma[nav].cont > 2){
-							fantasma[nav].pos_i++;
-							fantasma[nav].pos_j--;
+							fantasma[nav].pos_i--;
+							fantasma[nav].pos_j++;
 							fantasma[nav].cont = 0;
 						}
 					}
@@ -562,11 +558,11 @@ void fantasma_nav(int nav, int pos_i, int pos_j, int ia, int tam_i, int tam_j){
 // GamePlay
 void gamePlay(){
 	const int tam_i = 12, tam_j = 19;
-	int i, j, bar = 0;
+	int i, j, bar = 0, flag = 2;
 
 	player.simbolo = 67, player.pos_i = 1, player.pos_j = 2, player.pontos = 0;
-	fantasma[0].simbolo = 35,fantasma[0].pos_i = 6, fantasma[0].pos_j = 9,  fantasma[0].nav = 0, fantasma[0].ia = 5;
-	fantasma[1].simbolo = 36,fantasma[1].pos_i = 6, fantasma[1].pos_j = 10, fantasma[1].nav = 1, fantasma[1].ia = 5;
+	fantasma[0].simbolo = 35,fantasma[0].pos_i = 6, fantasma[0].pos_j = 9,  fantasma[0].nav = 0, fantasma[0].ia = mapa.dificuldade/24 /*%*/;
+	fantasma[1].simbolo = 36,fantasma[1].pos_i = 6, fantasma[1].pos_j = 10, fantasma[1].nav = 1, fantasma[1].ia = mapa.dificuldade/24 /*%*/;
 	fantasma[2].simbolo = 37,fantasma[2].pos_i = 7, fantasma[2].pos_j = 9,  fantasma[2].nav = 2, fantasma[2].ia = mapa.dificuldade / 21 /*%*/, fantasma[2].cont = 0;
 	fantasma[3].simbolo = 38,fantasma[3].pos_i = 7, fantasma[3].pos_j = 10, fantasma[3].nav = 3, fantasma[3].ia = mapa.dificuldade / 17 /*%*/; fantasma[3].cont = 0;
 
@@ -578,7 +574,7 @@ void gamePlay(){
 				mapa.vet_pontos[i][j] = ' ';
 		}
 	}
-
+	Sleep(500);
 	do{
 
 		limpaTela();
@@ -596,7 +592,8 @@ void gamePlay(){
 			fantasma_nav(fantasma[2].nav, fantasma[2].pos_i, fantasma[2].pos_j, fantasma[2].ia, tam_i, tam_j);
 			fantasma_nav(fantasma[3].nav, fantasma[3].pos_i, fantasma[3].pos_j, fantasma[3].ia, tam_i, tam_j);
 		}
-
+		
+		
 		// Construção Mapa
 		printf("\n");
 		colorir(1,0);
@@ -640,6 +637,11 @@ void gamePlay(){
 
 		for(i = 0; i <= tam_i; i++){
 			for(j = 0; j <= tam_j; j++){
+				// Primeira impressão com Sleep.
+				if(flag == 2){
+					Sleep(20);
+				}
+				//
 				if(j == 0){
 					printf("   ");
 				}
@@ -673,18 +675,24 @@ void gamePlay(){
 			}
 			printf("\n");
 		}
+		
+		colorir(1,0);
+		printf("    -------------------------------------\n");
+		colorir(15,0);
+		
 
 		// Voce Perdeu
 		if(player.pos_i == fantasma[0].pos_i && player.pos_j == fantasma[0].pos_j && player.cheat == 0){
-				vocePerdeu();
+				flag = vocePerdeu();
 		} else if(player.pos_i == fantasma[1].pos_i && player.pos_j == fantasma[1].pos_j && player.cheat == 0) {
-				vocePerdeu();
+				flag = vocePerdeu();
 		} else if(player.pos_i == fantasma[2].pos_i && player.pos_j == fantasma[2].pos_j && player.cheat == 0) {
-				vocePerdeu();
+				flag = vocePerdeu();
 		} else if(player.pos_i == fantasma[3].pos_i && player.pos_j == fantasma[3].pos_j && player.cheat == 0) {
-				vocePerdeu();
+				flag = vocePerdeu();
 		}
-
+	
+		
 		// Marcação de Pontos
 		if(mapa.vet_pontos[player.pos_i][player.pos_j] != 'X'){
 			mapa.vet_pontos[player.pos_i][player.pos_j] = 'X';
@@ -697,13 +705,14 @@ void gamePlay(){
 				}
 				// Pontuação Máxima 2050
 				if(player.pontos >= 2060){
-					voceGanhou();
+					flag = voceGanhou();
 				}
 		}
 
-		colorir(1,0);
-		printf("    -------------------------------------\n");
-		colorir(15,0);
+		// Tela Inicial
+		if(flag == 0){
+			break;
+		}
 
 		colorir(8,0);
 		printf("\t\t\t      Pontos: ");
@@ -717,7 +726,20 @@ void gamePlay(){
 		} else {
 			player.simbolo = 67;
 		}
-
+		
+		// Play
+		if(flag == 2){
+			Sleep(1000);
+			switch(rand() % 2){
+				case 0:
+					player.tecla = 'd';
+					break;
+				case 1:
+					player.tecla = 's';
+			}
+			flag = 1;
+		}
+		
 		// Dificuldade
 		Sleep(mapa.dificuldade);
 
